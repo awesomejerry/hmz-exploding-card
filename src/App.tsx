@@ -53,11 +53,24 @@ function App() {
                     <h2>找到了！</h2>
                     <img src={puzzle2Reward} alt="第一次約會的地方" />
                     <p className="message">「在這裡，我第一次牽起妳的手。」</p>
-                    <button onClick={() => console.log('Go to Puzzle 3')}>前往下一關</button>
+                    <button onClick={() => goToNextPuzzle(3)}>前往下一關</button>
                 </div>
             )}
 
-            {/* Add more puzzles here as currentPuzzle state changes */}
+            {/* Puzzle 3 */}
+            {currentPuzzle === 3 && !showReward3 && (
+                <Puzzle3 onSuccess={handlePuzzle3Success} />
+            )}
+
+            {/* Reward for Puzzle 3 */}
+            {currentPuzzle === 3 && showReward3 && (
+                <div id="reward-3" className="reward-screen">
+                    <h2>拼湊成功！</h2>
+                    <img src={puzzle3Reward} alt="拼湊的回憶" />
+                    <p className="message">「每一次回憶，都讓我們的愛更完整。」</p>
+                    <button onClick={() => console.log('Go to Puzzle 4')}>前往下一關</button>
+                </div>
+            )}
         </div>
     );
 }

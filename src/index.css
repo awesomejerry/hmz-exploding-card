@@ -109,3 +109,26 @@ button:hover {
 #map:hover {
     filter: blur(1px) grayscale(0%);
 }
+
+.jigsaw-grid {
+    display: grid;
+    width: 300px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    margin: 20px auto;
+    border: 2px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.jigsaw-piece {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #eee; /* Visual separation for pieces */
+    box-sizing: border-box;
+    cursor: grab;
+    background-repeat: no-repeat;
+    transition: transform 0.1s ease-out;
+}
+
+.jigsaw-piece:active {
+    cursor: grabbing;
+}
