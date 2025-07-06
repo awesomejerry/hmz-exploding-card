@@ -66,23 +66,19 @@ button:hover {
     background-color: #c2185b; /* A darker shade for hover */
 }
 
-.hidden {
-    display: none;
-}
-
-#error-message {
+#error-message, #error-message-2 {
     color: #d32f2f; /* A shade of red for errors */
     margin-top: 15px;
 }
 
-#reward img {
+.reward-screen img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     margin-top: 20px;
 }
 
-#reward .message {
+.reward-screen .message {
     font-style: italic;
     color: #555;
     margin-top: 20px;
