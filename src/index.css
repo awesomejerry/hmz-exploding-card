@@ -112,8 +112,9 @@ button:hover {
 
 .jigsaw-grid {
     display: grid;
-    width: 300px; /* Adjust as needed */
-    height: 300px; /* Adjust as needed */
+    width: 100%;
+    max-width: 400px; /* Max size for the grid */
+    aspect-ratio: 1 / 1; /* Ensure it's always square */
     margin: 20px auto;
     border: 2px solid #ddd;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);

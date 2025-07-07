@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import puzzle3Image from '../assets/puzzle-3.png'; // The full image for the puzzle
+import puzzle3Image from '../assets/puzzle-3.jpg'; // The full image for the puzzle
 
 interface Puzzle3Props {
     onSuccess: () => void;
 }
 
 // Define the number of rows and columns for the puzzle
-const ROWS = 2;
-const COLS = 2;
+const ROWS = 3;
+const COLS = 3;
 const NUM_PIECES = ROWS * COLS;
 
 // Helper to shuffle an array
@@ -100,7 +100,7 @@ const Puzzle3: React.FC<Puzzle3Props> = ({ onSuccess }) => {
                         style={{
                             backgroundImage: `url(${puzzle3Image})`,
                             backgroundSize: `${COLS * 100}% ${ROWS * 100}%`, // Scale the background image
-                            backgroundPosition: `-${(piece.correctPos % COLS) * (100 / COLS)}% -${Math.floor(piece.correctPos / COLS) * (100 / ROWS)}%`,
+                            backgroundPosition: `${(piece.correctPos % COLS) / (COLS - 1) * 100}% ${Math.floor(piece.correctPos / COLS) / (ROWS - 1) * 100}%`,
                         }}
                     >
                         {/* Optional: Display piece ID for debugging */}

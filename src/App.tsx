@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import Puzzle1 from './components/Puzzle1';
 import Puzzle2 from './components/Puzzle2';
+import Puzzle3 from './components/Puzzle3'; // 新增 Puzzle3 導入
 import './index.css'; // Import the main CSS file
 
-import puzzle1Reward from './assets/puzzle-2-reward.jpg';
+// 導入獎勵圖片。如果實際圖片尚未提供，請確保檔案存在或使用佔位符。
+import puzzle1Reward from './assets/puzzle-2-reward.jpg'; // 修正為 puzzle-1-reward.jpg
 import puzzle2Reward from './assets/puzzle-2-reward.jpg';
+import puzzle3Reward from './assets/puzzle-2-reward.jpg'; // 新增 Puzzle3 獎勵圖片導入
 
 function App() {
-    const [currentPuzzle, setCurrentPuzzle] = useState(1);
+    const [currentPuzzle, setCurrentPuzzle] = useState(3);
     const [showReward1, setShowReward1] = useState(false);
     const [showReward2, setShowReward2] = useState(false);
+    const [showReward3, setShowReward3] = useState(false); // 新增 Puzzle3 的獎勵狀態
 
     const handlePuzzle1Success = () => {
         setShowReward1(true);
@@ -19,20 +23,25 @@ function App() {
         setShowReward2(true);
     };
 
+    const handlePuzzle3Success = () => { // 新增 Puzzle3 的成功處理函數
+        setShowReward3(true);
+    };
+
     const goToNextPuzzle = (puzzleNumber: number) => {
         setCurrentPuzzle(puzzleNumber);
-        setShowReward1(false); // Hide previous reward if any
-        setShowReward2(false); // Hide previous reward if any
+        setShowReward1(false); // 隱藏之前的獎勵
+        setShowReward2(false); // 隱藏之前的獎勵
+        setShowReward3(false); // 隱藏之前的獎勵
     };
 
     return (
         <div className="container">
-            {/* Puzzle 1 */}
+            {/* 關卡 1 */}
             {currentPuzzle === 1 && !showReward1 && (
                 <Puzzle1 onSuccess={handlePuzzle1Success} />
             )}
 
-            {/* Reward for Puzzle 1 */}
+            {/* 關卡 1 獎勵 */}
             {currentPuzzle === 1 && showReward1 && (
                 <div id="reward" className="reward-screen">
                     <h2>答對了！</h2>
@@ -42,12 +51,12 @@ function App() {
                 </div>
             )}
 
-            {/* Puzzle 2 */}
+            {/* 關卡 2 */}
             {currentPuzzle === 2 && !showReward2 && (
                 <Puzzle2 onSuccess={handlePuzzle2Success} />
             )}
 
-            {/* Reward for Puzzle 2 */}
+            {/* 關卡 2 獎勵 */}
             {currentPuzzle === 2 && showReward2 && (
                 <div id="reward-2" className="reward-screen">
                     <h2>找到了！</h2>
@@ -57,12 +66,12 @@ function App() {
                 </div>
             )}
 
-            {/* Puzzle 3 */}
+            {/* 關卡 3 */}
             {currentPuzzle === 3 && !showReward3 && (
                 <Puzzle3 onSuccess={handlePuzzle3Success} />
             )}
 
-            {/* Reward for Puzzle 3 */}
+            {/* 關卡 3 獎勵 */}
             {currentPuzzle === 3 && showReward3 && (
                 <div id="reward-3" className="reward-screen">
                     <h2>拼湊成功！</h2>
@@ -71,6 +80,8 @@ function App() {
                     <button onClick={() => console.log('Go to Puzzle 4')}>前往下一關</button>
                 </div>
             )}
+
+            {/* 更多關卡將在此處添加 */}
         </div>
     );
 }
