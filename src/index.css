@@ -562,47 +562,68 @@ button:hover {
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    background: #000;
-    color: #fff;
-    border-radius: 15px;
-    min-height: 60vh;
+    padding: 30px;
     position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
+.shadow-puzzle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .shadow-puzzle-instruction {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     position: relative;
-    z-index: 3;
+    z-index: 2;
 }
 
 .shadow-puzzle-instruction h2 {
-    margin: 0 0 10px 0;
-    font-size: 1.5rem;
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
     color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .shadow-puzzle-instruction p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-    color: #ccc;
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #b3b3ff;
+    text-shadow: 0 0 10px rgba(179, 179, 255, 0.2);
 }
 
 .shadow-puzzle-hint {
     font-style: italic;
-    color: #aaa !important;
-    font-size: 0.8rem !important;
+    color: #8090ff !important;
+    font-size: 0.9rem !important;
+    opacity: 0.8;
 }
 
 .shadow-puzzle-dark-area {
     position: relative;
-    min-height: 40vh;
-    background: #000;
-    border-radius: 10px;
+    min-height: 450px;
+    background: radial-gradient(circle at center, #000 0%, #111 100%);
+    border-radius: 20px;
     touch-action: none;
     user-select: none;
-    margin-top: 20px;
+    margin: 20px 0;
+    overflow: hidden;
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.8),
+        0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .shadow-puzzle-flashlight-overlay {
@@ -613,81 +634,127 @@ button:hover {
     height: 100%;
     pointer-events: none;
     z-index: 2;
+    transition: opacity 0.3s ease;
 }
 
 .shadow-puzzle-hidden-word {
     position: absolute;
     transform: translate(-50%, -50%);
-    font-size: 2.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.8),
+        0 0 30px rgba(255, 255, 255, 0.4);
     z-index: 1;
     pointer-events: none;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+.shadow-puzzle-decoy-word {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 1.0rem;
+    font-weight: normal;
+    color: #666;
+    text-shadow:
+        0 0 8px rgba(102, 102, 102, 0.5),
+        0 0 16px rgba(102, 102, 102, 0.2);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
 }
 
 .shadow-puzzle-input-area {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #333;
-    z-index: 4;
-    min-width: 280px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    min-width: 320px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    pointer-events: auto;
 }
 
 .shadow-puzzle-input-group {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 15px;
 }
 
 .shadow-puzzle-input {
     flex: 1;
-    padding: 12px;
-    border: 2px solid #444;
-    border-radius: 6px;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
     font-size: 16px;
-    background: #222;
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
 .shadow-puzzle-input:focus {
     outline: none;
     border-color: #007acc;
+    box-shadow: 0 0 20px rgba(0, 122, 204, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.shadow-puzzle-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .shadow-puzzle-submit {
-    padding: 12px 20px;
-    background: #007acc;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #007acc 0%, #005a9e 100%);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 10px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 122, 204, 0.3);
 }
 
 .shadow-puzzle-submit:hover {
-    background: #005a9e;
+    background: linear-gradient(135deg, #005a9e 0%, #004080 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
 }
 
 .shadow-puzzle-error {
     color: #ff6b6b;
     text-align: center;
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 0.9rem;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 107, 107, 0.2);
 }
 
 .shadow-puzzle-hint-text {
     color: #ffd93d;
     text-align: center;
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 0.9rem;
     font-style: italic;
+    background: rgba(255, 217, 61, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 217, 61, 0.2);
 }
 
 .shadow-puzzle-start-message {
@@ -697,37 +764,113 @@ button:hover {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
-    color: #666;
+    color: #8090ff;
+    font-size: 1.2rem;
+    animation: pulseGlow 2s ease-in-out infinite;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(128, 144, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.shadow-puzzle-start-message p {
+    color: #8090ff;
     font-size: 1.1rem;
-    animation: pulse 2s infinite;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(128, 144, 255, 0.5);
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(128, 144, 255, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 30px rgba(128, 144, 255, 0.5);
+    }
 }
 
 /* Mobile optimizations for Shadow Puzzle */
 @media (max-width: 768px) {
     .shadow-puzzle {
         max-width: 100%;
-        padding: 15px;
-        margin: 0;
-        border-radius: 0;
-        min-height: 50vh;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 15px;
     }
-    
+
+    .shadow-puzzle-instruction h2 {
+        font-size: 1.5rem;
+    }
+
+    .shadow-puzzle-instruction p {
+        font-size: 0.9rem;
+    }
+
+    .shadow-puzzle-dark-area {
+        min-height: 350px;
+        border-radius: 15px;
+        margin: 15px 0;
+    }
+
     .shadow-puzzle-hidden-word {
-        font-size: 2rem;
+        font-size: 1.0rem;
     }
-    
+
+    .shadow-puzzle-decoy-word {
+        font-size: 0.9rem;
+    }
+
     .shadow-puzzle-input-area {
-        min-width: calc(100% - 40px);
+        position: fixed;
+        bottom: 20px;
         left: 20px;
         right: 20px;
         transform: none;
+        min-width: auto;
+        max-width: calc(100% - 40px);
+        padding: 20px;
+        z-index: 1000;
+        pointer-events: auto;
     }
-    
-    .shadow-puzzle-instruction h2 {
-        font-size: 1.3rem;
+
+    .shadow-puzzle-input-group {
+        flex-direction: column;
+        gap: 15px;
     }
-    
-    .shadow-puzzle-dark-area {
-        min-height: 35vh;
+
+    .shadow-puzzle-input {
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+        -webkit-appearance: none;
+        appearance: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .shadow-puzzle-submit {
+        padding: 15px 20px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .shadow-puzzle-start-message {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+
+    .shadow-puzzle-start-message p {
+        font-size: 1rem;
     }
 }

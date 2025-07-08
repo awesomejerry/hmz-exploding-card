@@ -13,8 +13,24 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
     const [showHint, setShowHint] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const correctAnswer = '寶貝'; // The hidden word to find
-    const hiddenWordPosition = { x: 50, y: 45 }; // Position as percentage
+    const correctAnswer = '巧克力棒'; // The hidden word to find
+    const hiddenWordPosition = { x: 10, y: 30 }; // Position as percentage
+
+    // 混淆詞彙和位置
+    const decoyWords = [
+        { word: '馬卡龍', position: { x: 15, y: 28 } },
+        { word: '費南雪', position: { x: 82, y: 35 } },
+        { word: '瑪德蓮', position: { x: 34, y: 67 } },
+        { word: '達克瓦茲', position: { x: 67, y: 23 } },
+        { word: '聖多諾黑', position: { x: 21, y: 72 } },
+        { word: '馬卡龍', position: { x: 88, y: 61 } }, // 重複出現增加混淆
+        { word: '費南雪', position: { x: 45, y: 19 } },
+        { word: '瑪德蓮', position: { x: 57, y: 83 } },
+        { word: '達克瓦茲', position: { x: 12, y: 45 } },
+        { word: '聖多諾黑', position: { x: 91, y: 78 } },
+        { word: '馬卡龍', position: { x: 28, y: 39 } },
+        { word: '費南雪', position: { x: 76, y: 58 } }
+    ];
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -67,7 +83,7 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
             Math.pow(mousePosition.y - hiddenWordPosition.y, 2)
         );
 
-        if (distance < 8 && isFlashlightActive) { // Within 8% distance
+        if (distance < 6 && isFlashlightActive) { // 縮小檢測範圍使其更精確
             setShowInput(true);
         }
     }, [mousePosition, isFlashlightActive]);
@@ -100,6 +116,7 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
                 <h2>光影的謎題</h2>
                 <p>在黑暗中尋找，那個對我們最重要的詞</p>
                 <p className="shadow-puzzle-hint">移動手指或滑鼠來照亮黑暗</p>
+                <p className="shadow-puzzle-hint">小心！有許多干擾詞彙</p>
             </div>
 
             <div className="shadow-puzzle-dark-area">
@@ -115,8 +132,22 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
                     {correctAnswer}
                 </div>
 
+                {/* 混淆詞彙 */}
+                {decoyWords.map((decoy, index) => (
+                    <div
+                        key={index}
+                        className="shadow-puzzle-decoy-word"
+                        style={{
+                            left: `${decoy.position.x}%`,
+                            top: `${decoy.position.y}%`
+                        }}
+                    >
+                        {decoy.word}
+                    </div>
+                ))}
+
                 {showInput && (
-                    <div className="shadow-puzzle-input-area">
+                    <div className="shadow-puzzle-input-area" onTouchStart={(e) => e.stopPropagation()}>
                         <form onSubmit={handleSubmit}>
                             <div className="shadow-puzzle-input-group">
                                 <input
@@ -126,8 +157,13 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
                                     placeholder="輸入你找到的詞"
                                     className="shadow-puzzle-input"
                                     autoFocus
+                                    onTouchStart={(e) => e.stopPropagation()}
                                 />
-                                <button type="submit" className="shadow-puzzle-submit">
+                                <button
+                                    type="submit"
+                                    className="shadow-puzzle-submit"
+                                    onTouchStart={(e) => e.stopPropagation()}
+                                >
                                     確認
                                 </button>
                             </div>
@@ -141,7 +177,7 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
 
                         {showHint && (
                             <p className="shadow-puzzle-hint-text">
-                                提示：這是我對你最常用的稱呼
+                                提示：這是你最喜歡吃的東西
                             </p>
                         )}
                     </div>
