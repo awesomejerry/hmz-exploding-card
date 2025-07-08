@@ -326,3 +326,233 @@ button:hover {
 .cipher-key strong {
     color: #0d47a1;
 }
+
+/* Puzzle 6 - Shake to Reveal Styles */
+.shake-puzzle {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blurred-image-container {
+    margin: 30px 0;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blurred-image {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    border-radius: 20px;
+    padding: 40px 20px;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blurred-image.shaking {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+.heart-message {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.clear-message h2 {
+    font-size: 2em;
+    margin: 10px 0;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.clear-message p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.hidden-message h2 {
+    font-size: 2em;
+    margin: 10px 0;
+    letter-spacing: 3px;
+}
+
+.hidden-message p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    letter-spacing: 2px;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.shake-progress {
+    margin: 30px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff9a9e, #fecfef);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.controls {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.motion-button,
+.test-button {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.motion-button {
+    background: #e91e63;
+    color: white;
+}
+
+.motion-button:hover {
+    background: #c2185b;
+    transform: translateY(-2px);
+}
+
+.test-button {
+    background: #2196f3;
+    color: white;
+}
+
+.test-button:hover {
+    background: #1976d2;
+    transform: translateY(-2px);
+}
+
+.instruction {
+    background: #fff3e0;
+    border: 2px solid #ffb74d;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.instruction p {
+    color: #ef6c00;
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.success-message {
+    background: #e8f5e8;
+    border: 2px solid #4caf50;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    color: #2e7d32;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

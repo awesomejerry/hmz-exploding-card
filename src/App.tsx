@@ -4,6 +4,7 @@ import Puzzle2 from './components/Puzzle2';
 import Puzzle3 from './components/Puzzle3';
 import Puzzle4 from './components/Puzzle4';
 import Puzzle5 from './components/Puzzle5';
+import Puzzle6 from './components/Puzzle6';
 import PuzzleWrapper from './components/PuzzleWrapper';
 import './index.css';
 
@@ -13,9 +14,10 @@ import puzzle2Reward from './assets/puzzle-2-reward.jpg';
 import puzzle3Reward from './assets/puzzle-2-reward.jpg';
 import puzzle4Reward from './assets/puzzle-2-reward.jpg';
 import puzzle5Reward from './assets/puzzle-2-reward.jpg';
+import puzzle6Reward from './assets/puzzle-2-reward.jpg';
 
 function App() {
-    const [currentPuzzle, setCurrentPuzzle] = useState(5);
+    const [currentPuzzle, setCurrentPuzzle] = useState(6);
 
     const goToNextPuzzle = (puzzleNumber: number) => {
         setCurrentPuzzle(puzzleNumber);
@@ -85,7 +87,20 @@ function App() {
                     rewardTitle="解密成功！"
                     rewardMessage="「每次聽到你這樣叫我，我的心都會融化。」"
                     rewardImageAlt="解密的訊息"
-                    onNextPuzzle={() => console.log('Go to Puzzle 6')}
+                    onNextPuzzle={() => goToNextPuzzle(6)}
+                />
+            )}
+
+            {/* 關卡 6 */}
+            {currentPuzzle === 6 && (
+                <PuzzleWrapper
+                    puzzleNumber={6}
+                    PuzzleComponent={Puzzle6}
+                    rewardImage={puzzle6Reward}
+                    rewardTitle="搖出真心話！"
+                    rewardMessage="「每一天都比昨天更愛你，這是我最真摯的告白。」"
+                    rewardImageAlt="搖出的真心話"
+                    onNextPuzzle={() => console.log('Go to Puzzle 7')}
                     showNextButton={false}
                 />
             )}
