@@ -3,6 +3,7 @@ import Puzzle1 from './components/Puzzle1';
 import Puzzle2 from './components/Puzzle2';
 import Puzzle3 from './components/Puzzle3';
 import Puzzle4 from './components/Puzzle4';
+import Puzzle5 from './components/Puzzle5';
 import PuzzleWrapper from './components/PuzzleWrapper';
 import './index.css';
 
@@ -11,9 +12,10 @@ import puzzle1Reward from './assets/puzzle-2-reward.jpg';
 import puzzle2Reward from './assets/puzzle-2-reward.jpg';
 import puzzle3Reward from './assets/puzzle-2-reward.jpg';
 import puzzle4Reward from './assets/puzzle-2-reward.jpg';
+import puzzle5Reward from './assets/puzzle-2-reward.jpg';
 
 function App() {
-    const [currentPuzzle, setCurrentPuzzle] = useState(4);
+    const [currentPuzzle, setCurrentPuzzle] = useState(5);
 
     const goToNextPuzzle = (puzzleNumber: number) => {
         setCurrentPuzzle(puzzleNumber);
@@ -69,9 +71,22 @@ function App() {
                     rewardTitle="找到了！"
                     rewardMessage="「這是只屬於我們的頻率。」"
                     rewardImageAlt="我們的頻率"
-                    onNextPuzzle={() => console.log('Go to Puzzle 5')}
-                    showNextButton={false}
+                    onNextPuzzle={() => goToNextPuzzle(5)}
                     keepAudioOnReward={true}
+                />
+            )}
+
+            {/* 關卡 5 */}
+            {currentPuzzle === 5 && (
+                <PuzzleWrapper
+                    puzzleNumber={5}
+                    PuzzleComponent={Puzzle5}
+                    rewardImage={puzzle5Reward}
+                    rewardTitle="解密成功！"
+                    rewardMessage="「每次聽到你這樣叫我，我的心都會融化。」"
+                    rewardImageAlt="解密的訊息"
+                    onNextPuzzle={() => console.log('Go to Puzzle 6')}
+                    showNextButton={false}
                 />
             )}
         </div>
