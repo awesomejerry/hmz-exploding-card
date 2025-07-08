@@ -5,6 +5,7 @@ import Puzzle3 from './components/Puzzle3';
 import Puzzle4 from './components/Puzzle4';
 import Puzzle5 from './components/Puzzle5';
 import Puzzle6 from './components/Puzzle6';
+import Puzzle7 from './components/Puzzle7';
 import PuzzleWrapper from './components/PuzzleWrapper';
 import './index.css';
 
@@ -15,9 +16,10 @@ import puzzle3Reward from './assets/puzzle-2-reward.jpg';
 import puzzle4Reward from './assets/puzzle-2-reward.jpg';
 import puzzle5Reward from './assets/puzzle-2-reward.jpg';
 import puzzle6Reward from './assets/puzzle-2-reward.jpg';
+import puzzle7Reward from './assets/puzzle-2-reward.jpg';
 
 function App() {
-    const [currentPuzzle, setCurrentPuzzle] = useState(6);
+    const [currentPuzzle, setCurrentPuzzle] = useState(7);
 
     const goToNextPuzzle = (puzzleNumber: number) => {
         setCurrentPuzzle(puzzleNumber);
@@ -100,7 +102,21 @@ function App() {
                     rewardTitle="搖出真心話！"
                     rewardMessage="「每一天都比昨天更愛你，這是我最真摯的告白。」"
                     rewardImageAlt="搖出的真心話"
-                    onNextPuzzle={() => console.log('Go to Puzzle 7')}
+                    onNextPuzzle={() => goToNextPuzzle(7)}
+                    showNextButton={true}
+                />
+            )}
+
+            {/* 關卡 7 */}
+            {currentPuzzle === 7 && (
+                <PuzzleWrapper
+                    puzzleNumber={7}
+                    PuzzleComponent={Puzzle7}
+                    rewardImage={puzzle7Reward}
+                    rewardTitle="光芒照亮了真心！"
+                    rewardMessage="「在黑暗中，我依然能找到你，因為你是我心中永恆的光。」"
+                    rewardImageAlt="光影中的真心"
+                    onNextPuzzle={() => console.log('Go to Puzzle 8')}
                     showNextButton={false}
                 />
             )}
