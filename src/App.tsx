@@ -36,7 +36,7 @@ function App() {
                     PuzzleComponent={Puzzle1}
                     rewardImage={puzzle1Reward}
                     rewardTitle="答對了！"
-                    rewardMessage="「就是這一天，我的世界因為妳而閃亮。」"
+                    rewardMessage="「就是這一天，CC在一起。」"
                     rewardImageAlt="我們的第一張合照"
                     onNextPuzzle={() => goToNextPuzzle(2)}
                 />
@@ -49,7 +49,7 @@ function App() {
                     PuzzleComponent={Puzzle2}
                     rewardImage={puzzle2Reward}
                     rewardTitle="找到了！"
-                    rewardMessage="「在這裡，我第一次牽起妳的手。」"
+                    rewardMessage="「開啟了上山下海的下半輩子！」"
                     rewardImageAlt="第一次約會的地方"
                     onNextPuzzle={() => goToNextPuzzle(3)}
                 />
@@ -62,7 +62,7 @@ function App() {
                     PuzzleComponent={Puzzle3}
                     rewardImage={puzzle3Reward}
                     rewardTitle="拼湊成功！"
-                    rewardMessage="「每一次回憶，都讓我們的愛更完整。」"
+                    rewardMessage="「度過人生的大大小小事。」"
                     rewardImageAlt="拼湊的回憶"
                     onNextPuzzle={() => goToNextPuzzle(4)}
                 />
@@ -75,7 +75,7 @@ function App() {
                     PuzzleComponent={Puzzle4}
                     rewardImage={puzzle4Reward}
                     rewardTitle="找到了！"
-                    rewardMessage="「這是只屬於我們的頻率。」"
+                    rewardMessage="「一起做各種奇怪的事。」"
                     rewardImageAlt="我們的頻率"
                     onNextPuzzle={() => goToNextPuzzle(5)}
                     keepAudioOnReward={true}
@@ -89,7 +89,7 @@ function App() {
                     PuzzleComponent={Puzzle5}
                     rewardImage={puzzle5Reward}
                     rewardTitle="解密成功！"
-                    rewardMessage="「每次聽到你這樣叫我，我的心都會融化。」"
+                    rewardMessage="「你是我的寶貝，我是你的大寶貝🥰」"
                     rewardImageAlt="解密的訊息"
                     onNextPuzzle={() => goToNextPuzzle(6)}
                 />
@@ -102,7 +102,7 @@ function App() {
                     PuzzleComponent={Puzzle6}
                     rewardImage={puzzle6Reward}
                     rewardTitle="搖出真心話！"
-                    rewardMessage="「每一天都比昨天更愛你，這是我最真摯的告白。」"
+                    rewardMessage="「就算搞怪扮醜都一樣可愛！」"
                     rewardImageAlt="搖出的真心話"
                     onNextPuzzle={() => goToNextPuzzle(7)}
                     showNextButton={true}
@@ -116,7 +116,7 @@ function App() {
                     PuzzleComponent={Puzzle7}
                     rewardImage={puzzle7Reward}
                     rewardTitle="光芒照亮了真心！"
-                    rewardMessage="「在黑暗中，我依然能找到你，因為你是我心中永恆的光。」"
+                    rewardMessage="「每天都要吃巧克力棒😋」"
                     rewardImageAlt="光影中的真心"
                     onNextPuzzle={() => goToNextPuzzle(8)}
                     showNextButton={true}
@@ -130,7 +130,7 @@ function App() {
                     PuzzleComponent={Puzzle8}
                     rewardImage={puzzle8Reward}
                     rewardTitle="愛的密語解鎖！"
-                    rewardMessage="「這些天數見證了我們的愛情，每一天都是我愛你的證明。」"
+                    rewardMessage="「你願意和我繼續上山下海嗎？」"
                     rewardImageAlt="最終的愛情密語"
                     onNextPuzzle={() => console.log('All puzzles completed!')}
                     showNextButton={false}
