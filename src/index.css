@@ -797,6 +797,225 @@ button:hover {
     }
 }
 
+/* Puzzle 8 - The Final Key */
+.final-puzzle {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.final-puzzle-header {
+    margin-bottom: 40px;
+}
+
+.final-puzzle-header h2 {
+    font-size: 2rem;
+    color: #e91e63;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(233, 30, 99, 0.2);
+}
+
+.final-puzzle-header p {
+    color: #666;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.password-lock-container {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-lock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lock-shackle {
+    width: 60px;
+    height: 40px;
+    border: 8px solid #333;
+    border-bottom: none;
+    border-radius: 30px 30px 0 0;
+    margin-bottom: -8px;
+    background: transparent;
+    z-index: 1;
+}
+
+.lock-body {
+    width: 120px;
+    height: 100px;
+    background: linear-gradient(145deg, #f0f0f0, #d1d1d1);
+    border-radius: 15px;
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.1),
+        inset 0 2px 5px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.lock-display {
+    text-align: center;
+}
+
+.lock-screen {
+    background: rgba(0, 0, 0, 0.8);
+    color: #00ff00;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    margin: 5px;
+}
+
+.lock-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.lock-question {
+    margin: 5px 0;
+    font-size: 0.7rem;
+    color: #00ff00;
+}
+
+.input-section {
+    margin: 40px 0;
+}
+
+.number-input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.days-input {
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    border: 3px solid #e91e63;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.1);
+    transition: all 0.3s ease;
+}
+
+.days-input:focus {
+    outline: none;
+    border-color: #c2185b;
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+    transform: scale(1.02);
+}
+
+.input-suffix {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e91e63;
+}
+
+.unlock-button {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(233, 30, 99, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.unlock-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
+    background: linear-gradient(135deg, #c2185b, #ad1457);
+}
+
+.unlock-button:active {
+    transform: translateY(0);
+}
+
+.feedback-section {
+    margin: 25px 0;
+}
+
+.error-message {
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(244, 67, 54, 0.2);
+    margin-bottom: 15px;
+}
+
+.hint-section {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    border: 2px solid #ff9800;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.hint-text {
+    color: #e65100;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.hint-detail {
+    color: #bf360c;
+    font-size: 0.95rem;
+    margin: 5px 0;
+}
+
+.extra-hint {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    border: 2px solid #4caf50;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+
+.final-hint {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.romantic-quote {
+    margin-top: 50px;
+    padding: 25px;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+    border-radius: 20px;
+    border: 2px solid rgba(233, 30, 99, 0.2);
+}
+
+.romantic-quote p {
+    color: #880e4f;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
 /* Mobile optimizations for Shadow Puzzle */
 @media (max-width: 768px) {
     .shadow-puzzle {
@@ -871,6 +1090,61 @@ button:hover {
     }
 
     .shadow-puzzle-start-message p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile optimizations for Final Puzzle */
+@media (max-width: 768px) {
+    .final-puzzle {
+        padding: 20px 15px;
+    }
+
+    .final-puzzle-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .password-lock-container {
+        margin: 30px 0;
+    }
+
+    .lock-body {
+        width: 100px;
+        height: 80px;
+    }
+
+    .lock-shackle {
+        width: 50px;
+        height: 30px;
+        border-width: 6px;
+    }
+
+    .lock-screen {
+        padding: 8px;
+        font-size: 0.7rem;
+    }
+
+    .lock-question {
+        font-size: 0.6rem;
+    }
+
+    .days-input {
+        width: 120px;
+        padding: 12px 15px;
+        font-size: 1.3rem;
+    }
+
+    .unlock-button {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+
+    .romantic-quote {
+        margin-top: 40px;
+        padding: 20px;
+    }
+
+    .romantic-quote p {
         font-size: 1rem;
     }
 }
