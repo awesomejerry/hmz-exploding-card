@@ -11,17 +11,17 @@ import PuzzleWrapper from './components/PuzzleWrapper';
 import './index.css';
 
 // 導入獎勵圖片
-import puzzle1Reward from './assets/puzzle-2-reward.jpg';
+import puzzle1Reward from './assets/puzzle-1-reward.jpg';
 import puzzle2Reward from './assets/puzzle-2-reward.jpg';
-import puzzle3Reward from './assets/puzzle-2-reward.jpg';
-import puzzle4Reward from './assets/puzzle-2-reward.jpg';
-import puzzle5Reward from './assets/puzzle-2-reward.jpg';
-import puzzle6Reward from './assets/puzzle-2-reward.jpg';
-import puzzle7Reward from './assets/puzzle-2-reward.jpg';
-import puzzle8Reward from './assets/puzzle-2-reward.jpg';
+import puzzle3Reward from './assets/puzzle-3-reward.jpg';
+import puzzle4Reward from './assets/puzzle-4-reward.jpg';
+import puzzle5Reward from './assets/puzzle-5-reward.jpg';
+import puzzle6Reward from './assets/puzzle-6-reward.jpg';
+import puzzle7Reward from './assets/puzzle-7-reward.jpg';
+import puzzle8Reward from './assets/puzzle-8-reward.jpg';
 
 function App() {
-    const [currentPuzzle, setCurrentPuzzle] = useState(8);
+    const [currentPuzzle, setCurrentPuzzle] = useState(1);
 
     const goToNextPuzzle = (puzzleNumber: number) => {
         setCurrentPuzzle(puzzleNumber);

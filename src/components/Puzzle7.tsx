@@ -90,6 +90,18 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        processAnswer();
+    };
+
+    const handleButtonClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Button clicked!'); // 調試用
+        processAnswer();
+    };
+
+    const processAnswer = () => {
+        console.log('Processing answer:', userAnswer); // 調試用
         if (userAnswer.trim() === correctAnswer) {
             onSuccess();
         } else {
@@ -147,22 +159,38 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
                 ))}
 
                 {showInput && (
-                    <div className="shadow-puzzle-input-area" onTouchStart={(e) => e.stopPropagation()}>
+                    <div className="shadow-puzzle-input-area">
                         <form onSubmit={handleSubmit}>
                             <div className="shadow-puzzle-input-group">
                                 <input
                                     type="text"
                                     value={userAnswer}
                                     onChange={(e) => setUserAnswer(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            e.preventDefault();
+                                            processAnswer();
+                                        }
+                                    }}
                                     placeholder="輸入你找到的詞"
                                     className="shadow-puzzle-input"
                                     autoFocus
                                     onTouchStart={(e) => e.stopPropagation()}
+                                    onTouchMove={(e) => e.stopPropagation()}
+                                    onTouchEnd={(e) => e.stopPropagation()}
                                 />
                                 <button
-                                    type="submit"
+                                    type="button"
                                     className="shadow-puzzle-submit"
-                                    onTouchStart={(e) => e.stopPropagation()}
+                                    onClick={handleButtonClick}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        processAnswer();
+                                    }}
+                                    onTouchStart={(e) => {
+                                        e.stopPropagation();
+                                    }}
                                 >
                                     確認
                                 </button>

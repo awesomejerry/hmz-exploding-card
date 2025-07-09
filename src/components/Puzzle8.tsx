@@ -25,9 +25,6 @@ const Puzzle8: React.FC<Puzzle8Props> = ({ onSuccess }) => {
         const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
 
         setCorrectDays(daysDiff);
-        console.log('開始日期:', startDate.toDateString());
-        console.log('今天:', today.toDateString());
-        console.log('計算天數:', daysDiff);
     }, []);
 
     const handleSubmit = (e: React.FormEvent) => {
