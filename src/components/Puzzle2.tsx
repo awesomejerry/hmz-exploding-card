@@ -13,7 +13,9 @@ const Puzzle2: React.FC<Puzzle2Props> = ({ onSuccess }) => {
         const x = (event.clientX - rect.left) / rect.width;
         const y = (event.clientY - rect.top) / rect.height;
 
-        const correctArea = { minX: 0.15, maxX: 0.25, minY: 0.55, maxY: 0.65 };
+        console.log(x, y)
+
+        const correctArea = { minX: 0.15, maxX: 0.25, minY: 0.60, maxY: 0.70 };
 
         if (x >= correctArea.minX && x <= correctArea.maxX && y >= correctArea.minY && y <= correctArea.maxY) {
             setError(false);

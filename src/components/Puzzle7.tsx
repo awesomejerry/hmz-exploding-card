@@ -11,6 +11,7 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
     const [showInput, setShowInput] = useState(false);
     const [attempts, setAttempts] = useState(0);
     const [showHint, setShowHint] = useState(false);
+    const [isWordVisible, setIsWordVisible] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const correctAnswer = '巧克力棒'; // The hidden word to find
@@ -23,13 +24,40 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
         { word: '瑪德蓮', position: { x: 34, y: 67 } },
         { word: '達克瓦茲', position: { x: 67, y: 23 } },
         { word: '聖多諾黑', position: { x: 21, y: 72 } },
-        { word: '馬卡龍', position: { x: 88, y: 61 } }, // 重複出現增加混淆
+        { word: '馬卡龍', position: { x: 88, y: 61 } },
         { word: '費南雪', position: { x: 45, y: 19 } },
         { word: '瑪德蓮', position: { x: 57, y: 83 } },
         { word: '達克瓦茲', position: { x: 12, y: 45 } },
         { word: '聖多諾黑', position: { x: 91, y: 78 } },
         { word: '馬卡龍', position: { x: 28, y: 39 } },
-        { word: '費南雪', position: { x: 76, y: 58 } }
+        { word: '費南雪', position: { x: 76, y: 58 } },
+        { word: '瑪德蓮', position: { x: 18, y: 55 } },
+        { word: '達克瓦茲', position: { x: 63, y: 47 } },
+        { word: '聖多諾黑', position: { x: 84, y: 26 } },
+        { word: '馬卡龍', position: { x: 39, y: 81 } },
+        { word: '費南雪', position: { x: 72, y: 14 } },
+        { word: '瑪德蓮', position: { x: 26, y: 63 } },
+        { word: '達克瓦茲', position: { x: 94, y: 52 } },
+        { word: '聖多諾黑', position: { x: 51, y: 91 } },
+        { word: '馬卡龍', position: { x: 8, y: 71 } },
+        { word: '費南雪', position: { x: 73, y: 38 } },
+        { word: '瑪德蓮', position: { x: 42, y: 22 } },
+        { word: '達克瓦茲', position: { x: 85, y: 49 } },
+        { word: '聖多諾黑', position: { x: 17, y: 86 } },
+        { word: '馬卡龍', position: { x: 59, y: 16 } },
+        { word: '費南雪', position: { x: 31, y: 74 } },
+        { word: '瑪德蓮', position: { x: 78, y: 65 } },
+        { word: '達克瓦茲', position: { x: 48, y: 33 } },
+        { word: '聖多諾黑', position: { x: 14, y: 59 } },
+        { word: '馬卡龍', position: { x: 68, y: 29 } },
+        { word: '費南雪', position: { x: 23, y: 48 } },
+        { word: '瑪德蓮', position: { x: 87, y: 73 } },
+        { word: '達克瓦茲', position: { x: 35, y: 15 } },
+        { word: '聖多諾黑', position: { x: 92, y: 44 } },
+        { word: '馬卡龍', position: { x: 55, y: 77 } },
+        { word: '費南雪', position: { x: 11, y: 37 } },
+        { word: '瑪德蓮', position: { x: 74, y: 88 } },
+        { word: '達克瓦茲', position: { x: 44, y: 54 } },
     ];
 
     useEffect(() => {
@@ -83,7 +111,15 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
             Math.pow(mousePosition.y - hiddenWordPosition.y, 2)
         );
 
-        if (distance < 6 && isFlashlightActive) { // 縮小檢測範圍使其更精確
+        // Make word visible when flashlight is close (larger radius for visibility)
+        if (distance < 12 && isFlashlightActive) {
+            setIsWordVisible(true);
+        } else {
+            setIsWordVisible(false);
+        }
+
+        // Show input when very close to the word
+        if (distance < 6 && isFlashlightActive) {
             setShowInput(true);
         }
     }, [mousePosition, isFlashlightActive]);
@@ -96,12 +132,10 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
     const handleButtonClick = (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Button clicked!'); // 調試用
         processAnswer();
     };
 
     const processAnswer = () => {
-        console.log('Processing answer:', userAnswer); // 調試用
         if (userAnswer.trim() === correctAnswer) {
             onSuccess();
         } else {
@@ -135,7 +169,7 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
                 <div className="shadow-puzzle-flashlight-overlay" style={flashlightStyle}></div>
 
                 <div
-                    className="shadow-puzzle-hidden-word"
+                    className={`shadow-puzzle-hidden-word ${isWordVisible ? 'visible' : ''}`}
                     style={{
                         left: `${hiddenWordPosition.x}%`,
                         top: `${hiddenWordPosition.y}%`

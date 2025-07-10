@@ -1,3 +1,11 @@
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: flex;
@@ -5,8 +13,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 0;
     background-color: #f0f2f5;
     color: #333;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 .container {
@@ -17,6 +29,8 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
+    position: relative;
+    margin: 0 auto;
 }
 
 h1 {
@@ -91,9 +105,9 @@ button:hover {
 .map-container {
     position: relative;
     margin: 20px auto;
-    width: 400px;
+    width: 100%;
     /* Or max-width: 100% */
-    height: 400px;
+    height: 100%;
 }
 
 #map {
@@ -101,14 +115,10 @@ button:hover {
     height: 100%;
     border-radius: 10px;
     cursor: pointer;
-    /* filter: blur(3px) grayscale(50%); */
     transition: filter 0.5s ease;
     object-fit: contain;
 }
 
-#map:hover {
-    filter: blur(1px) grayscale(0%);
-}
 
 .jigsaw-grid {
     display: grid;
@@ -193,6 +203,7 @@ button:hover {
 
 .radio-puzzle .frequency-slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 15px;
     border-radius: 5px;
@@ -677,14 +688,21 @@ button:hover {
     transform: translate(-50%, -50%);
     font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
-    text-shadow:
-        0 0 15px rgba(255, 255, 255, 0.8),
-        0 0 30px rgba(255, 255, 255, 0.4);
+    color: transparent;
+    text-shadow: none;
     z-index: 1;
     pointer-events: none;
     font-family: 'Courier New', monospace;
     letter-spacing: 2px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.shadow-puzzle-hidden-word.visible {
+    opacity: 1;
 }
 
 .shadow-puzzle-decoy-word {
@@ -929,25 +947,25 @@ button:hover {
 }
 
 .lock-shackle {
-    width: 60px;
-    height: 40px;
-    border: 8px solid #333;
+    width: clamp(50px, 20vw, 80px);
+    height: clamp(30px, 12.5vw, 50px);
+    border: clamp(6px, 2.5vw, 10px) solid #333;
     border-bottom: none;
-    border-radius: 30px 30px 0 0;
-    margin-bottom: -8px;
+    border-radius: clamp(25px, 10vw, 40px) clamp(25px, 10vw, 40px) 0 0;
+    margin-bottom: clamp(-6px, -2.5vw, -10px);
     background: transparent;
     z-index: 1;
 }
 
 .lock-body {
-    width: 120px;
-    height: 100px;
+    width: clamp(100px, 40vw, 160px);
+    height: clamp(80px, 32.5vw, 130px);
     background: linear-gradient(145deg, #f0f0f0, #d1d1d1);
-    border-radius: 15px;
+    border-radius: clamp(12px, 5vw, 20px);
     box-shadow:
-        0 8px 15px rgba(0, 0, 0, 0.1),
-        inset 0 2px 5px rgba(255, 255, 255, 0.8),
-        inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+        0 clamp(5px, 2.5vw, 10px) clamp(10px, 5vw, 20px) rgba(0, 0, 0, 0.15),
+        inset 0 clamp(2px, 0.75vw, 3px) clamp(4px, 2vw, 8px) rgba(255, 255, 255, 0.8),
+        inset 0 clamp(-2px, -0.75vw, -3px) clamp(4px, 2vw, 8px) rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -962,21 +980,21 @@ button:hover {
 .lock-screen {
     background: rgba(0, 0, 0, 0.8);
     color: #00ff00;
-    padding: 10px;
-    border-radius: 8px;
+    padding: clamp(8px, 3vw, 12px);
+    border-radius: clamp(6px, 2.5vw, 10px);
     font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    margin: 5px;
+    font-size: clamp(0.7rem, 2.25vw, 0.9rem);
+    margin: clamp(4px, 1.5vw, 6px);
 }
 
 .lock-icon {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
+    font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    margin-bottom: clamp(5px, 2vw, 8px);
 }
 
 .lock-question {
-    margin: 5px 0;
-    font-size: 0.7rem;
+    margin: clamp(5px, 2vw, 8px) 0;
+    font-size: clamp(0.6rem, 2vw, 0.8rem);
     color: #00ff00;
 }
 
@@ -1200,24 +1218,8 @@ button:hover {
         margin: 30px 0;
     }
 
-    .lock-body {
-        width: 100px;
-        height: 80px;
-    }
-
-    .lock-shackle {
-        width: 50px;
-        height: 30px;
-        border-width: 6px;
-    }
-
-    .lock-screen {
-        padding: 8px;
-        font-size: 0.7rem;
-    }
-
     .lock-question {
-        font-size: 0.6rem;
+        font-size: clamp(0.6rem, 1.8vw, 0.7rem);
     }
 
     .days-input {
@@ -1280,7 +1282,14 @@ button:hover {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     background: linear-gradient(135deg, #ffeef3 0%, #f0f2f5 100%);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .pin-container {
@@ -1291,6 +1300,8 @@ button:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
+    position: relative;
+    margin: 0 auto;
 }
 
 .pin-container h1 {
@@ -1376,4 +1387,102 @@ button:hover {
     color: #d32f2f;
     margin: 0;
     font-size: 1em;
+}
+
+/* 手機端樣式修復 */
+@media (max-width: 768px) {
+    html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f2f5;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+        max-width: 420px;
+        margin: 10px;
+        padding: 35px 25px;
+        position: relative;
+        left: 0;
+        right: 0;
+        transform: none;
+        box-sizing: border-box;
+    }
+
+    .date-input {
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .date-input input {
+        width: 65px;
+        padding: 10px;
+        font-size: 1.2em;
+        margin: 3px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 1.1em;
+    }
+}
+
+/* 針對更小螢幕的額外修復 */
+@media (max-width: 480px) {
+    .container {
+        width: calc(100% - 16px);
+        margin: 8px;
+        padding: 30px 20px;
+    }
+
+    .date-input input {
+        width: 60px;
+        padding: 8px;
+        font-size: 1.1em;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    .pin-container {
+        width: calc(100% - 16px);
+        margin: 8px;
+        padding: 30px 20px;
+    }
 }
