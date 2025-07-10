@@ -24,11 +24,11 @@ const Puzzle1: React.FC<Puzzle1Props> = ({ onSuccess }) => {
             <h1>第一關：我們的第一天</h1>
             <p>我們故事開始的那一天是？</p>
             <div className="date-input">
-                <input type="text" value={year} onChange={(e) => setYear(e.target.value)} placeholder="YYYY" maxLength={4} />
+                <input type="number" value={year} onChange={(e) => setYear(e.target.value)} placeholder="YYYY" maxLength={4} />
                 <span>/</span>
-                <input type="text" value={month} onChange={(e) => setMonth(e.target.value)} placeholder="MM" maxLength={2} />
+                <input type="number" value={month} onChange={(e) => setMonth(e.target.value)} placeholder="MM" maxLength={2} />
                 <span>/</span>
-                <input type="text" value={day} onChange={(e) => setDay(e.target.value)} placeholder="DD" maxLength={2} />
+                <input type="number" value={day} onChange={(e) => setDay(e.target.value)} placeholder="DD" maxLength={2} />
             </div>
             <button onClick={handleSubmit}>確認答案</button>
             {error && <p id="error-message">日期不對喔，再想一想！</p>}
