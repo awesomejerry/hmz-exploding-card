@@ -8,6 +8,7 @@ import Puzzle6 from './components/Puzzle6';
 import Puzzle7 from './components/Puzzle7';
 import Puzzle8 from './components/Puzzle8';
 import PuzzleWrapper from './components/PuzzleWrapper';
+import PinVerification from './components/PinVerification';
 import './index.css';
 
 // 導入獎勵圖片
@@ -22,10 +23,20 @@ import puzzle8Reward from './assets/puzzle-8-reward.jpg';
 
 function App() {
     const [currentPuzzle, setCurrentPuzzle] = useState(1);
+    const [isVerified, setIsVerified] = useState(false);
 
     const goToNextPuzzle = (puzzleNumber: number) => {
         setCurrentPuzzle(puzzleNumber);
     };
+
+    const handleVerified = () => {
+        setIsVerified(true);
+    };
+
+    // 如果還沒驗證，顯示PIN驗證畫面
+    if (!isVerified) {
+        return <PinVerification onVerified={handleVerified} />;
+    }
 
     return (
         <div className="container">
