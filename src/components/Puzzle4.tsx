@@ -8,7 +8,7 @@ interface Puzzle4Props {
 
 const CORRECT_FREQUENCY = 91.3;
 const FREQUENCY_TOLERANCE = 0.0; // The range for a perfect lock
-const FADE_TOLERANCE = 0.3;      // The wider range for audio to start fading in
+const FADE_TOLERANCE = 1;      // The wider range for audio to start fading in
 
 const Puzzle4: React.FC<Puzzle4Props> = ({ onSuccess }) => {
     const [frequency, setFrequency] = useState(98.0);
@@ -58,22 +58,29 @@ const Puzzle4: React.FC<Puzzle4Props> = ({ onSuccess }) => {
             const distance = Math.abs(frequency - CORRECT_FREQUENCY);
 
             if (distance <= FREQUENCY_TOLERANCE) {
-                // Correct frequency range
+                // Correct frequency range - only secret audio
                 staticAudio.volume = 0;
+                staticAudio.muted = true;
                 secretAudio.volume = 1;
+                secretAudio.muted = false;
                 successTimerRef.current = setTimeout(() => {
                     onSuccess();
                 }, 2000);
             } else if (distance < FADE_TOLERANCE) {
                 // Fade-in range
                 const fadeProgress = 1 - (distance - FREQUENCY_TOLERANCE) / (FADE_TOLERANCE - FREQUENCY_TOLERANCE);
+                staticAudio.muted = false;
+                secretAudio.muted = false;
                 secretAudio.volume = fadeProgress;
                 staticAudio.volume = 1 - fadeProgress;
             } else {
-                // Outside of any range
+                // Outside of any range - only static audio
                 secretAudio.volume = 0;
+                secretAudio.muted = true;
                 staticAudio.volume = 1;
+                staticAudio.muted = false;
             }
+            console.log(`Static: ${staticAudio.muted ? 'muted' : staticAudio.volume}, Secret: ${secretAudio.muted ? 'muted' : secretAudio.volume}`);
         }
 
         return () => {
