@@ -72,6 +72,11 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
         };
 
         const handleTouchMove = (e: TouchEvent) => {
+            // Don't prevent default if touch is on input area
+            const target = e.target as HTMLElement;
+            if (target.closest('.shadow-puzzle-input-area')) {
+                return;
+            }
             e.preventDefault();
             if (containerRef.current && e.touches.length > 0) {
                 const rect = containerRef.current.getBoundingClientRect();
@@ -84,6 +89,11 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
         };
 
         const handleTouchStart = (e: TouchEvent) => {
+            // Don't prevent default if touch is on input area
+            const target = e.target as HTMLElement;
+            if (target.closest('.shadow-puzzle-input-area')) {
+                return;
+            }
             e.preventDefault();
             setIsFlashlightActive(true);
         };
@@ -209,22 +219,11 @@ const Puzzle7: React.FC<Puzzle7Props> = ({ onSuccess }) => {
                                     placeholder="輸入你找到的詞"
                                     className="shadow-puzzle-input"
                                     autoFocus
-                                    onTouchStart={(e) => e.stopPropagation()}
-                                    onTouchMove={(e) => e.stopPropagation()}
-                                    onTouchEnd={(e) => e.stopPropagation()}
                                 />
                                 <button
                                     type="button"
                                     className="shadow-puzzle-submit"
                                     onClick={handleButtonClick}
-                                    onTouchEnd={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        processAnswer();
-                                    }}
-                                    onTouchStart={(e) => {
-                                        e.stopPropagation();
-                                    }}
                                 >
                                     確認
                                 </button>
